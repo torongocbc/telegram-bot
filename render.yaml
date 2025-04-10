@@ -1,0 +1,9 @@
+services:
+  - type: worker
+    name: telegram-bot-demandas
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    env: python
+    region: oregon  # ou outro data center mais próximo
+    plan: free
