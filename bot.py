@@ -44,14 +44,14 @@ async def demandar(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("📩 Fazer Proposta", callback_data=f"proposta_{update.message.message_id}")],
-        [InlineKeyboardButton("❌ Cancelar", callback_data=f"cancelar_{update.message.message_id}")]
+        [InlineKeyboardButton(" Fazer Proposta", callback_data=f"proposta_{update.message.message_id}")],
+        [InlineKeyboardButton(" Cancelar", callback_data=f"cancelar_{update.message.message_id}")]
     ])
     msg = await update.message.reply_text(
-        f"📝 *Nova Demanda de {user.first_name} (@{user.username}):*"
+        f" *Nova Demanda de {user.first_name} (@{user.username}):*"
 {descricao}
 
-💬 Propostas:",
+ Propostas:",
         parse_mode="Markdown",
         reply_markup=keyboard
     )
@@ -80,7 +80,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             cursor.execute("UPDATE demandas SET status='cancelada' WHERE message_id=?", (demanda_msg_id,))
             cursor.execute("DELETE FROM propostas WHERE demanda_id=(SELECT id FROM demandas WHERE message_id=?)", (demanda_msg_id,))
             conn.commit()
-            await query.message.edit_text("❌ Esta demanda foi cancelada.")
+            await query.message.edit_text(" Esta demanda foi cancelada.")
         else:
             await query.message.reply_text("Apenas o criador da demanda pode cancelá-la.")
 
@@ -110,17 +110,17 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     demanda = cursor.execute("SELECT descricao FROM demandas WHERE id=?", (demanda_id,)).fetchone()
 
     keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("📩 Fazer Proposta", callback_data=f"proposta_{demanda_msg_id}")],
-        [InlineKeyboardButton("❌ Cancelar", callback_data=f"cancelar_{demanda_msg_id}")]
+        [InlineKeyboardButton(" Fazer Proposta", callback_data=f"proposta_{demanda_msg_id}")],
+        [InlineKeyboardButton(" Cancelar", callback_data=f"cancelar_{demanda_msg_id}")]
     ])
 
     try:
         await context.bot.edit_message_text(
             chat_id=update.message.chat_id,
             message_id=demanda_msg_id,
-            text=f"📝 *Demanda:* {demanda[0]}
+            text=f" *Demanda:* {demanda[0]}
 
-💬 Propostas:
+ Propostas:
 {proposta_texto}",
             parse_mode="Markdown",
             reply_markup=keyboard
