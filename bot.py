@@ -129,7 +129,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # Função principal
 def main():
-    app = ApplicationBuilder().token(kHjDBiy5pYY).build()
+    app = ApplicationBuilder().token(7853403234:AAEQw7MUazTnc9667sQFE64Ex8gVurLT1bg).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("demandar", demandar))
