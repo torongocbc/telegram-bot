@@ -47,7 +47,7 @@ async def demandar(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("❌ Cancelar", callback_data=f"cancelar_{update.message.message_id}")]
     ])
     msg = await update.message.reply_text(
-        f"📝 *Nova Demanda de {user.first_name} (@{user.username}):*
+        f"📝 *Nova Demanda de {user.first_name} (@{user.username}):*"
 {descricao}
 
 💬 Propostas:",
