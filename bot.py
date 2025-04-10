@@ -51,7 +51,7 @@ async def demandar(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f" *Nova Demanda de {user.first_name} (@{user.username}):*"
 {descricao}
 
- Propostas:",
+ Propostas:"
         parse_mode="Markdown",
         reply_markup=keyboard
     )
