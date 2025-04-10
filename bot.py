@@ -90,7 +90,7 @@ async def receber_mensagem(update: Update, context: ContextTypes.DEFAULT_TYPE) -
 
 def main() -> None:
     """Inicia o bot."""
-    application = Application.builder().token(7853403234:AAEQw7MUazTnc9667sQFE64Ex8gVurLT1bg).build()
+    application = Application.builder().token("7853403234:AAEQw7MUazTnc9667sQFE64Ex8gVurLT1bg").build()
 
     # Handlers
     application.add_handler(CommandHandler("start", start))
