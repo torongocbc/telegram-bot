@@ -1,4 +1,5 @@
 
+# -*- coding: utf-8 -*-
 import logging
 import sqlite3
 from telegram import (Update, InlineKeyboardMarkup, InlineKeyboardButton)
